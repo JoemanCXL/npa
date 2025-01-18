@@ -64,5 +64,5 @@ export function getVersion() {
   for (const line of getVersion.split("\n")) {
     await $`echo ${line} >> src/version.js`;
   }
-  await $`bunx biome format --write src/version.js`;
+  await $`bun x biome format --write src/version.js`;
 }

@@ -48,6 +48,7 @@ import {
   turnJumpTicks,
 } from "./galaxy";
 import { GameStore, type TypedProperty } from "./gamestore";
+import "./globals";
 import {
   defineHotkey,
   getClip,
@@ -85,41 +86,9 @@ import { getVersion } from "./version.js";
 import { getWithinRange } from "./visibility";
 
 export let allSeenKeys: string[] = [];
-interface CruxLib {
-  touchEnabled: boolean;
-  crux: any;
-  format: any;
-  formatTime: any;
-  templates: { [k: string]: string };
-  tickCallbacks: any[];
-}
-export interface NeptunesPrideData {
-  sendAllTech: (recipient: number) => void;
-  sendTech: (recipient: number, tech: string) => void;
-  sendCash: (recipient: number, price: number) => void;
-  gameVersion: string;
-  version: any;
-  inbox: any;
-  universe: any;
-  gameNumber: any;
-  gameId?: any;
-  np: any;
-  npui: any;
-  originalPlayer: any;
-  account: any;
-  crux: any;
-}
 
 export function getGameNumber() {
   return NeptunesPride.gameNumber || NeptunesPride.gameId;
-}
-declare global {
-  var jQuery: any;
-  var NeptunesPride: NeptunesPrideData;
-  var Crux: CruxLib;
-  interface String {
-    format(...args: any[]): string;
-  }
 }
 
 async function NeptunesPrideAgent() {
